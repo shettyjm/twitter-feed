@@ -12,3 +12,11 @@ build:
     - script:
         name: maven build
         code: mvn clean assembly:assembly
+#Push the docker image with our built and tested application to the Oracle Container Registry
+push-release:
+  steps:
+    - internal/docker-push:
+        tag: $WERCKER_GIT_BRANCH-$WERCKER_GIT_COMMIT
+        working-dir: /pipeline/source
+        ports: $PORT
+        cmd: sh target/bin/start
