@@ -20,7 +20,7 @@ dhub-push-release:
         password: $DHUB_PASS
         tag: werker_ci_cd
         repository: shettyjm/hello
-        registry: https://registry.hub.docker.com
+        registry: https://registry.hub.docker.com/v2
 #Push the docker image with our built and tested application to the Oracle Container Registry
 push-release:
   steps:
