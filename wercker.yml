@@ -12,6 +12,15 @@ build:
     - script:
         name: maven build
         code: mvn clean assembly:assembly
+#Push the docker image with our built and tested application to the docker hub
+deploy:
+  steps:
+    - internal/docker-push:
+        username: $DHUB_USER
+        password: $DHUB_PASS
+        tag: werker_ci_cd
+        repository: shettyjm/werkerdemo
+        registry: https://registry.hub.docker.com
 #Push the docker image with our built and tested application to the Oracle Container Registry
 push-release:
   steps:
